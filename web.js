@@ -10,6 +10,7 @@ app.configure(function () {
 app.get('/', function(request, response) {
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    if (err) throw err;
     client.query('SELECT emoji FROM emoji ORDER BY RANDOM() LIMIT 1', function(err, result) {
       done();
       response.send(result.rows[0].emoji);
