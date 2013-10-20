@@ -1,0 +1,33 @@
+{
+  "name": "emoji-me",
+  "version": "0.0.1",
+  "description": "put some emoji on it",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gregburek/emoji-me.git"
+  },
+  "author": "Greg Burek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gregburek/emoji-me/issues"
+  },
+  "engines": {
+    "node": "0.10.21",
+    "npm": "1.3.x"
+  },
+  "dependencies": {
+    "express": "3.1.2",
+    "pg": "~2.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-docco2": "~0.1.5",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "underscore": "~1.5.2"
+  }
+}

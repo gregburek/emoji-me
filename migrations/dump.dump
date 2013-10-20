@@ -1,0 +1,1451 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: emoji; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE emoji (
+    id integer NOT NULL,
+    emoji text,
+    created_at timestamp with time zone DEFAULT now(),
+    data json
+);
+
+
+--
+-- Name: emoji_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE emoji_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: emoji_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE emoji_id_seq OWNED BY emoji.id;
+
+
+--
+-- Name: emojiparts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE emojiparts (
+    id integer NOT NULL,
+    emoji text,
+    created_at timestamp with time zone DEFAULT now(),
+    data json
+);
+
+
+--
+-- Name: emojiparts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE emojiparts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: emojiparts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE emojiparts_id_seq OWNED BY emojiparts.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY emoji ALTER COLUMN id SET DEFAULT nextval('emoji_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY emojiparts ALTER COLUMN id SET DEFAULT nextval('emojiparts_id_seq'::regclass);
+
+
+--
+-- Data for Name: emoji; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY emoji (id, emoji, created_at, data) FROM stdin;
+1	(●´∀｀●)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+2	ヽ(；▽；)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+3	☆*:.｡. o(≧▽≦)o .｡.:*☆	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+4	(≧∇≦)/	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+5	( ´ ▽ ` )ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+6	(´∀｀)♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+7	(*°∀°)=3	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+8	♡＾▽＾♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+9	（＿´ω｀）	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+10	（人´∀`*）	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+11	(´･_･`)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+12	(◎-◎；)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+13	(-_-)ゞ゛	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+14	(´ ｀;) ?	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+15	( ・◇・)?	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+16	ヽ（´ー｀）┌	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+17	┗┃・ ■ ・┃┛	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+18	ヽ(　￣д￣;)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+19	＼(;´□｀)/	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+20	ヽ(ー_ー )ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+21	( ꒪Д꒪)ノ	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+22	（゜◇゜）	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+23	＼(>o<)ノ	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+24	Σ(゜゜)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+25	щ(゜ロ゜щ)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+26	(^_^;)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+27	(#^.^#)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+28	（＠´＿｀＠）	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+29	（*/∇＼*）	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+30	(*´∀`*)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+31	ー(￣～￣)ξ	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+32	(￣^￣)	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+33	(￣ェ￣;)	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+34	o(´^｀)o	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+35	<(￣︶￣)>	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+36	(ーー;)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+37	ヽ(￣д￣;)ノ	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+38	（−＿−；）	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+39	(･_-｡ )	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+40	(-’๏_๏’-)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+41	(*≧m≦*)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+42	ヽ(ｏ`皿′ｏ)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+43	ヽ(≧Д≦)ノ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+44	[○･｀Д´･○]	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+45	(((p(>o<)q)))	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+46	(・｀ω´・)	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+47	(｡･｀ω´･｡)	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+48	(｀ε´)	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+49	（=｀〜´=）	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+50	^(#｀∀´)_Ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+51	☆⌒(＞。≪)	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+52	ヘ(>_<ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+53	/(*ι*)ヾ	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+54	◎☆（♯××）┘	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+55	☆￣(＞。☆)	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+56	（ ; ; ）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+57	(ToT)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+58	（；_・）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+59	(； T.T))	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+60	・(/Д`)・	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+61	(ノдヽ)	2013-10-19 23:36:30.195105-07	{"category":"Scared"}
+62	（／_＼）	2013-10-19 23:36:30.195105-07	{"category":"Scared"}
+63	ヽ(ﾟДﾟ)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Scared"}
+64	（／．＼）	2013-10-19 23:36:30.195105-07	{"category":"Scared"}
+65	(／。＼)	2013-10-19 23:36:30.195105-07	{"category":"Scared"}
+66	(￣(エ)￣)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+67	(*ノ・ω・）	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+68	ヾ(T(エ)Tヽ)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+69	(^(エ)^)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+70	⊂(￣(工)￣)⊃	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+71	(=^･ｪ･^=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+72	V(=^･ω･^=)v	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+73	＼(=^‥^)/’`	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+74	(=ＴェＴ=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+75	(=^･ω･^)y＝	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+76	Uo･ｪ･oU	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+77	▽・ω・▽	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+78	ｖ・。・Ｖ	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+79	U・♀・U	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+80	(U・x・U)	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+81	>=<	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+82	>_)))彡	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+83	（：。）ミ	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+84	(°))<<	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+85	ミ(・・)ミ	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+86	(=ﾟωﾟ)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+87	ヾ(｡･ω･｡)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+88	(*-ω-)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+89	(* >ω<)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+90	(´・ω・`)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+91	@(o･ｪ･)@	2013-10-19 23:36:30.195105-07	{"category":"Monkeys"}
+92	@(o･ｪ･o)@	2013-10-19 23:36:30.195105-07	{"category":"Monkeys"}
+93	└@(･ｪ･)@┐	2013-10-19 23:36:30.195105-07	{"category":"Monkeys"}
+94	@(/o･ｪ･o)@/	2013-10-19 23:36:30.195105-07	{"category":"Monkeys"}
+95	@(｡･o･)@	2013-10-19 23:36:30.195105-07	{"category":"Monkeys"}
+96	( ´(00)`)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+97	(￣(oo)￣)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+98	( ´(00)`)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+99	ヽ(*’(OO)’)ﾉﾟ	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+100	 (￣（∞）￣)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+101	m(_ _)m	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+102	（ﾉ´д｀）	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+103	＜(。_。)＞	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+104	_:(´□`」 ∠):_	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+105	m(._.)m	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+106	ヘ(^_^ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+107	(o^^)o	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+108	(ノ‥)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+109	ヾ(･ω･*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+110	(。⌒∇⌒)。	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+111	ｏ口(・∀・ )	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+112	~旦_(^O^ )	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+113	( ^-^)_旦”"	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+114	~(=^‥^)_旦~	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+115	( -_-)旦~	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+116	ヾ(＾∇＾)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+117	( ^_^)／	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+118	( ´ ▽ ` )ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+119	☆ﾐ(o*･ω･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+120	(￣▽￣)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+121	|･ω･｀)	2013-10-19 23:36:30.195105-07	{"category":"Hiding"}
+122	|ω・）	2013-10-19 23:36:30.195105-07	{"category":"Hiding"}
+123	ﾍ(･_|	2013-10-19 23:36:30.195105-07	{"category":"Hiding"}
+124	|_・)	2013-10-19 23:36:30.195105-07	{"category":"Hiding"}
+125	｜−・;）	2013-10-19 23:36:30.195105-07	{"category":"Hiding"}
+126	(´ε｀ )♡	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+127	（＿ε＿）	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+128	（￣ε￣＠）	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+129	(○´3｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+130	(づ￣ ³￣)づ	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+131	（・∀・）	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+132	（＾ｖ＾）	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+133	(*≧▽≦)ﾉｼ))	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+134	(*・艸・)	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+135	（　´∀｀）	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+136	ヾ(´□ ｀* )ノ	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+137	(´▽ ｀)ノ♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+138	ヽ(´・ ｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+139	ヾ(´〇 ｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+140	(ﾉ> ◇ <)ﾉ♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+141	Σ(￣。￣ノ)ノ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+142	(*´ο`*)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+143	＼（´Ｏ ｀）／	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+144	ヾ(。￣□￣)ﾂ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+145	ヾ(￣□￣;)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+146	（＾＿－）	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+147	(^_-)	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+148	（＾_-）	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+149	（○゜ε＾○）	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+150	＼（^０＾）／	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+151	φ(￣ー￣ )ノ	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+152	＿φ(￣ー￣ )	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+153	___ψ(‥ )	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+154	＿φ( °-°)/	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+155	φ(^∇^ )	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+156	(╯°□°）╯︵ ┻━┻	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+157	┬──┬◡ﾉ(° -°ﾉ)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+158	(╯°Д°）╯︵/(.□ . \\)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+159	〆(・∀・＠)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+160	 ((((*｡_｡)_	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+161	（x_x；）	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+162	(×_×#	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+163	ヾ(×× ) ﾂ	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+164	(＊0＊;)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+165	(º_º)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+166	＼（－－）／	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+167	~(>_<。)＼	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+168	（◎ー◎；）	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+169	ﾍ(￣ ￣;ﾍ)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+170	ヘ(_ _ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+171	ヽ(∀゜ )人( ゜∀)ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+172	＼（＾∀＾）メ（＾∀＾）ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+173	（　＾＾）人（＾＾　）	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+174	☆-(ノﾟДﾟ)八(ﾟДﾟ )ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+175	ヽ(*^ｰ^)人(^ｰ^*)ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+176	(´┏o┓｀)	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+177	(￣┏Д┓￣°*)	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+178	(ノ≧┏Д┓≦)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+179	ﾐ(´┏ω┓｀)/	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+180	(￣┏Д┓￣ )	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+181	(´Д` )	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+182	（ゝ。∂）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+183	ヽ(･∀･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+184	（＾凹＾）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+185	(ﾉ･ｪ･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+186	(*^▽^*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+187	∩( ・ω・)∩	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+188	Ｏ(≧∇≦)Ｏ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+189	＼（＠￣∇￣＠）／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+190	(☆^ー^☆)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+191	ヽ(*≧ω≦)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+192	ヽ(*⌒∇⌒*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+193	ヽ(‘ ∇‘ )ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+194	(´∀`)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+195	(/^▽^)/	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+196	(　＾∇＾)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+197	o(≧∇≦o)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+198	（＾ω＾）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+199	⊙△⊙	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+200	(◕‿◕✿)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+201	(•ิ_•ิ)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+202	（*＾＾*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+203	(ノ*゜▽゜*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+204	(￣个￣)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+205	へ(゜∇、°)へ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+206	ヽ(^。^)丿	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+207	ヾ(@^▽^@)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+208	ヾ(＠^∇^＠)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+209	ヾ(＠゜▽゜＠）ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+210	(ノ＞▽＜。)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+211	(((＼（＠v＠）／)))	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+212	(o;TωT)o	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+213	“ヽ(´▽｀)ノ”	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+214	Ψ(´▽｀)Ψ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+215	(❁´◡`❁)*✲ﾟ*	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+216	(✿◠‿◠)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+217	✖‿✖	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+218	∩(︶▽︶)∩	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+219	(¬‿¬)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+220	≖‿≖	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+221	(ﾉ´ヮ´)ﾉ*:･ﾟ✧	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+222	(;ﾞ°´ω°´)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+223	(•‿•)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+224	(*¬*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+225	(*^▽^*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+226	o(〃＾▽＾〃)o	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+227	(￣▽+￣*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+228	(°∀°)b	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+229	°˖✧◝(⁰▿⁰)◜✧˖°	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+230	(｀・ω・´)”	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+231	(*´・ｖ・)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+232	(⌒▽⌒)☆	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+233	(´∇ﾉ｀*)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+234	（＾_＾）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+235	(＾▽＾)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+236	(*≧▽≦)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+237	（　´∀｀）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+238	(☆^O^☆)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+239	(´ω｀★)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+240	*(*´∀｀*)☆	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+241	d=(´▽｀)=b	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+242	（*＾ワ＾*）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+243	(°◇°;)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+244	(ﾉ´ｰ`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+245	＼( ｀.∀´)／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+246	ヽ(｀◇´)/	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+247	｡◕‿◕｡	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+248	⊙▽⊙	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+249	(∩_∩)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+250	(/•ิ_•ิ)/	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+251	（＾⊆＾）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+252	ヾ(´▽｀;)ゝ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+253	＼(^▽^＠)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+254	（-＾〇＾-）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+255	(ヘ。ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+256	ヾ(@°▽°@)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+257	o((*^▽^*))o	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+258	（＠´＿｀＠）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+259	＼（＠；◇；＠）／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+260	(°◇°;)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+261	ヽ(;^o^ヽ)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+262	(((o(*ﾟ▽ﾟ*)o)))	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+263	（ｖ＾＿＾）ｖ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+264	(ღ˘⌣˘ღ) ♫･*:.｡. .｡.:*	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+265	(◑‿◐)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+266	(*~▽~)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+267	(︶ω︶)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+268	(n˘v˘•)¬	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+269	ʘ‿ʘ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+270	°˖✧◝(⁰▿⁰)◜✧˖°	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+271	(⊙ヮ⊙)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+272	ヾ(＠°▽°＠)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+273	(＝⌒▽⌒＝)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+274	≧(´▽｀)≦	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+275	ヾ(＠^▽^＠)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+276	о(ж＞▽＜)ｙ ☆	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+277	(๑╹っ╹๑)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+278	ヽ(；▽；)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+279	(((o(*ﾟ▽ﾟ*)o)))	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+280	⊂((・▽・))⊃	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+281	（・◇・）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+282	（￣ー￣）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+283	（’-’*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+284	＼（＾ ＾）／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+285	(^～^)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+286	(★^O^★)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+287	＼（Ｔ∇Ｔ）／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+288	Ｏ(≧▽≦)Ｏ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+289	＼(*T▽T*)／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+290	ヽ(＾Д＾)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+291	(゜▽゜;)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+292	ヽ(´ー`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+293	(●⌒∇⌒●)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+294	ヽ(*・ω・)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+295	⊙ω⊙	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+296	o (◡‿◡✿)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+297	｡◕‿◕｡	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+298	（ΦωΦ）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+299	(-^〇^-)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+300	(゜▼゜＊）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+301	(“⌒∇⌒”)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+302	（＞ｙ＜）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+303	（＾ｖ＾）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+304	ヾ（＠＾▽＾＠）ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+305	ヾ(@゜∇゜@)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+306	ヾ(＠† ▽ †＠）ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+307	＼(☆o◎)／	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+308	(゜▽゜;)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+309	（⌒▽⌒ゞ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+310	ヾ(＠⌒ー⌒＠)ノ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+311	(ી(΄◞ิ౪◟ิ‵)ʃ)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+312	ლ(╹◡╹ლ)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+313	ლ(́◉◞౪◟◉‵ლ)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+314	(─‿‿─)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+315	(∩▂∩)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+316	ಥ‿ಥ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+317	☆ﾐ(o*･ω･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+318	(ᅌᴗᅌ* )	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+319	( ͡° ͜ʖ ͡°)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+320	☆*･゜ﾟ･*\\(^O^)/*･゜ﾟ･*☆	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+321	(^∇^)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+322	(≡^∇^≡)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+323	（‐＾▽＾‐）	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+324	o(^▽^)o	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+325	(*⌒∇⌒*)	2013-10-19 23:36:30.195105-07	{"category":"Happy or Joyful"}
+326	♡o｡.(✿ฺ｡ ✿ฺ)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+327	(ღ˘⌣˘ღ)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+328	(｡♡‿♡｡)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+329	(๑・ω-)～♡”	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+330	(‘∀’●)♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+331	（´ω｀♡%）	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+332	(｡･ω･｡)ﾉ♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+333	(｡-_-｡ )人( ｡-_-｡)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+334	(´ ▽｀).。ｏ♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+335	（〃・・〃）	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+336	(｡’▽’｡)♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+337	(✿ ♡‿♡)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+338	✿♡‿♡✿	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+339	（*´▽｀*）	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+340	ヽ(愛´∀｀愛)ノ	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+341	（●´∀｀）ノ♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+342	(●♡∀♡)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+343	(o⌒．⌒o)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+344	♡（ﾉ´∀`）	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+345	(●´□`)♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+346	♡╣[-_-]╠♡	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+347	♡～(‘▽^人)	2013-10-19 23:36:30.195105-07	{"category":"Infatuation or Love"}
+348	｢(ﾟﾍﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+349	(´−｀) ﾝｰ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+350	「(°ヘ°)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+351	(´｀;) ?	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+352	く（＾_・）ゝ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+353	٩(̾●̮̮̃̾•̃̾)۶	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+354	щ(ºДºщ)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+355	(●__●)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+356	(＃⌒∇⌒＃)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+357	`(๑ △ ๑)`*	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+358	(◎_◎;)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+359	(・_・ヾ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+360	(‘◇’)?	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+361	【・ヘ・?】	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+362	(゜-゜)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+363	( ?´_ゝ｀)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+364	(」ﾟヘﾟ)」	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+365	(。ヘ°)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+366	〈(゜。゜)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+367	(^～^;)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+368	(⊙_◎)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+369	﴾͡๏̯͡๏﴿	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+370	(ﾟｰﾟ;	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+371	(・・。)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+372	(⊙_☉)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+373	(」ﾟﾛﾟ)｣	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+374	(｀_´)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+375	(￣(エ)￣)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+376	ヽ(゜Q。)ノ？	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+377	【・_・?】	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+378	ヾ(´･ ･｀｡)ノ”	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+379	o(´^｀)o	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+380	(•ิ_•ิ)?	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+381	ヽ(゜Q。)ノ？	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+382	(゜。゜)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+383	٩(͡๏̯͡๏)۶	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+384	 ಠ_ರೃ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+385	ఠ_ఠ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+386	(●´ω｀●)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+387	⁀⊙﹏☉⁀	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+388	(⊙.☉)7	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+389	(C_C)	2013-10-19 23:36:30.195105-07	{"category":"Confused"}
+390	ヽ（*ω。）ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+391	╮(─▽─)╭	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+392	٩(-̮̮̃•̃)۶	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+393	┐(￣ヮ￣)┌	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+394	ლ(ಠ_ಠლ)	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+395	┗┐ヽ(′Д、`*)ﾉ┌┛	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+396	ヾ(´A｀)ノﾟ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+397	＼（〇_ｏ）／	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+398	ヾ(*´ー`)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+399	ヽ(´～｀；）	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+400	(;´・`)>	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+401	¯\\_(ツ)_/¯	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+402	┐(￣ー￣)┌	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+403	╰(　´◔　ω　◔ `)╯	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+404	¯\\(°_o)/¯	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+405	ヽ( ´¬`)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+406	ヽ（・＿・；)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+407	ヽ(。_°)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+408	ヽ(‘ー`)ノ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+409	┐(‘～`；)┌	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+410	（＾～＾）	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+411	٩(  -̮̮̃   -̃)۶	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+412	t(ツ)_/¯	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+413	ಠ_ಠ	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+414	╮(╯▽╰)╭	2013-10-19 23:36:30.195105-07	{"category":"Mellow"}
+415	⊙ ０ ⊙	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+416	(○o○)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+417	∑(;°Д°)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+418	(((( ;°Д°))))	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+419	（￣□￣；）	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+420	━Σ(ﾟДﾟ|||)━	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+421	(*ﾟﾛﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+422	(ﾉﾟ0ﾟ)ﾉ~	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+423	w(°ｏ°)w	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+424	（・□・；）	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+425	(´⊙ω⊙`)！	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+426	((((；゜Д゜)))	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+427	∑(O_O；)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+428	Σ(゜ロ゜;)	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+429	(」゜ロ゜)」	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+430	⊙▂⊙	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+431	L(・o・)」	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+432	((((；゜Д゜)))	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+433	\\(*0*)/	2013-10-19 23:36:30.195105-07	{"category":"Surprised"}
+434	(/ω＼)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+435	（/｡＼)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+436	(╯_╰)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+437	(*/ω＼*)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+438	\\(///Σ///)\\	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+439	(<o///v>)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+440	(^^ゞ	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+441	(‘-’*)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+442	(⌒_⌒;)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+443	(〃￣ω￣〃ゞ	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+444	(*´_ゝ｀)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+445	(*ﾉ▽ﾉ)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+446	（。-＿-。）	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+447	(╯ಊ╰)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+448	\\(//∇//)\\	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+449	（//･_･//)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+450	(^^;)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+451	(*^^*)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+452	(#｀ε´#ゞ	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+453	(*´ｪ ｀*)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+454	(*´∀`*)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+455	(*ﾉωﾉ)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+456	(#／。 ＼#)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+457	(ﾉ)´∀｀(ヾ)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+458	(*ﾟｰﾟ)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+459	(⊙﹏⊙✿)	2013-10-19 23:36:30.195105-07	{"category":"Shy or Embarrassed"}
+460	(((￣へ￣井)	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+461	（￣へ￣）	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+462	(-、-)	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+463	(￣ω￣;)	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+464	(`へ´*)ノ	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+465	（￣～￣;）	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+466	( ；｀ヘ´)	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+467	（｀＾´）ノ	2013-10-19 23:36:30.195105-07	{"category":"Smug"}
+468	(;° ロ°)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+469	｡:ﾟ*+;(●´･д･`●);+*ﾟ:｡	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+470	(￣□￣;)!!	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+471	(⊙△⊙✿)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+472	Σ（ﾟдﾟlll）	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+473	( ；´Д｀)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+474	(￣◇￣;)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+475	(~_~;)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+476	⊙﹏⊙	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+477	(⊙…⊙ )	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+478	ヽ（゜ロ゜；）ノ	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+479	(;´Д`)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+480	(＠￣Д￣＠；)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+481	(꒪⌓꒪)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+482	（；￣ェ￣）	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+483	ヽ(￣д￣;)ノ	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+484	((*゜Д゜)ゞ”	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+485	ミ●﹏☉ミ	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+486	( ´△ ｀)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+487	（°o°； ）	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+488	\\(￣□￣)\\	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+489	(⊙︿⊙✿)	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+490	Σ(ﾟﾛﾟ｣)｣	2013-10-19 23:36:30.195105-07	{"category":"Worried"}
+491	ヽ(#`Д´)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+492	(;¬_¬)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+493	o(-`д´- ｡)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+494	(´Д｀)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+495	(＃｀д´)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+496	(━┳━ _ ━┳━)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+497	＼(＠O＠)／	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+498	s(・｀ヘ´・;)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+499	θ＼(；￢_￢)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+500	凸(｀△´＋）	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+501	＼(｀0´)／	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+502	щ(ಠ益ಠщ)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+503	o(≧o≦)o	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+504	ᕙ(⇀‸↼‶)ᕗ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+505	(¬▂¬)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+506	ಠ_ಠ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+507	ლಠ益ಠ)ლ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+508	ಠ▃ಠ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+509	(⌣̀_⌣́)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+510	(>_<)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+511	o(>< )o	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+512	（＞д＜）	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+513	ヽ(#`Д´)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+514	(/ﾟДﾟ)/	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+515	(¬､¬)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+516	(；¬д¬)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+517	ヽ(●-`Д´-)ノ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+518	(；￣Д￣）	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+519	(」゜ロ゜)」	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+520	(┳◇┳)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+521	（≧▼≦；)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+522	（▼へ▼メ）	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+523	ヽ(｀⌒´メ)ノ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+524	凸(｀0´)凸	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+525	-`д´-	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+526	(ノಠ益ಠ)ノ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+527	(⋋▂⋌)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+528	ᕦ(ò_óˇ)ᕤ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+529	(¬_¬)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+530	s(・｀ヘ´・；)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+531	凸ಠ益ಠ)凸	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+532	t(-_-t)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+533	(,,#ﾟДﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+534	ｏ( ><)o	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+535	（;≧皿≦）	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+536	Σ(-`Д´-ﾉ；)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+537	(¬д¬。)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+538	（；¬＿¬)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+539	(≧σ≦)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+540	(*￣m￣)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+541	(¬_¬)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+542	Σ(▼□▼メ)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+543	{{|└(>o< )┘|}}	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+544	＼(〇O〇)／	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+545	＼(`O´θ／	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+546	凸(-0-メ)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+547	凸(｀⌒´メ)凸	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+548	(>人<)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+549	щ(ಥДಥщ)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+550	(◣_◢)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+551	( ಠ ಠ )	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+552	ಥ⌣ಥ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+553	ლ(ಠ益ಠლ	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+554	╭(๑¯д¯๑)╮	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+555	ヽ(#ﾟДﾟ)ﾉ┌┛	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+556	(ಥ⌣ಥ)	2013-10-19 23:36:30.195105-07	{"category":"Angry"}
+557	(｀∀´)Ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+558	“ψ(｀∇´)ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+559	ψ(｀∇´)ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+560	o(｀ω´*)o	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+561	(ﾒ｀ﾛ´)/	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+562	(*-`ω´- )人	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+563	 ψ(*｀ー´)ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+564	（｀ー´）	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+565	| ｀Д´|	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+566	(｀Д´*)	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+567	Ψ(｀▽´)Ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+568	(ц｀ω´ц*)	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+569	Ψ(｀◇´)Ψ	2013-10-19 23:36:30.195105-07	{"category":"Evil"}
+570	(。_＋)＼	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+571	(ノ>ノ)	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+572	ヘ（。□°）ヘ	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+573	~(>_<~)	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+574	(xLx)ヾ	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+575	／(x~x)＼	2013-10-19 23:36:30.195105-07	{"category":"Painful"}
+576	(´Ａ｀。)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+577	(┳Д┳)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+578	｡･ﾟﾟ･(>д<)･ﾟﾟ･｡	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+579	（ｉДｉ）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+580	ヽ(´□｀。)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+581	ヽ(●ﾟ´Д｀ﾟ●)ﾉﾟ	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+582	(个_个)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+583	｡゜(｀Д´)゜｡	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+584	(/□＼*)・゜	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+585	(ㄒoㄒ)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+586	o(；△；)o	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+587	╥﹏╥	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+588	(╯︵╰,)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+589	 (╥_╥)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+590	╥﹏╥	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+591	.・゜゜・（／。＼）・゜゜・．	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+592	(T＿T)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+593	(Ｔ▽Ｔ)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+594	(T_T)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+595	（；へ：）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+596	(´＿｀。)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+597	(´∩｀。)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+598	(´；д；`)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+599	(。┰ω┰。)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+600	(´；ω；`)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+601	(ﾟ´Д｀ﾟ)ﾟ	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+602	 ( p_q)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+603	((´д｀))	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+604	(。┰ω┰。)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+605	((o(;△;)o))	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+606	⊙︿⊙	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+607	(;*△*;)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+608	(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+609	(っ˘̩╭╮˘̩)っ	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+610	(T⌓T)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+611	（ ＴДＴ）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+612	(‘A`)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+613	((T.T； )	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+614	(ノД`)・゜・。	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+615	(´Д｀。)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+616	｡：ﾟ(｡ﾉω＼｡)ﾟ･｡	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+617	(*´；ェ；`*)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+618	(゜´Д｀゜)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+619	。ﾟ(ﾟﾉД｀ﾟ)ﾟ｡	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+620	 {{p´Д｀q}}	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+621	(╯︵╰,)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+622	 ( ≧Д≦)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+623	p(´⌒｀｡q)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+624	（；￣д￣）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+625	o(╥﹏╥)o	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+626	（´＿｀）	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+627	(∩︵∩)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+628	(︶︹︺)	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+629	ಥ_ಥ	2013-10-19 23:36:30.195105-07	{"category":"Sad"}
+630	(*￣(ｴ)￣*)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+631	⊂(￣(ｴ)￣)⊃	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+632	(´(エ)｀)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+633	⊂(◎(工)◎)⊃	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+634	⁝⁞⁝⁞ʕु•̫͡•ʔु☂⁝⁞⁝⁝	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+635	(｡･ω･｡)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+636	川´･ω･`川	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+637	＼(・｀(ｪ)・)/	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+638	(^(I)^)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+639	⊂(^(工)^)⊃	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+640	ヾ(´(ｴ)｀ﾉﾞ	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+641	“(`(エ)´)ノ	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+642	(♡ó(ｴ)ò)ﾉ♡	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+643	ヽ(￣(ｴ)￣)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+644	(●￣(ｴ)￣●)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+645	(●｀･(ｴ)･´●)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+646	( (ﾐ´ω`ﾐ))	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+647	(￣(ｴ)￣)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+648	⊂(・(ェ)・)⊃	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+649	(／(ｴ)＼)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+650	 (｀(エ)´)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+651	 (/-(ｴ)-＼)	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+652	(／￣(ｴ)￣)／	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+653	《/(￣(ｴ)￣)ゞ》	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+654	Ψ(￣(ｴ)￣)Ψ	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+655	┏((＝￣(ｴ)￣=))┛	2013-10-19 23:36:30.195105-07	{"category":"Bears"}
+656	(^・ω・^ )	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+657	(.=^・ェ・^=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+658	~(=^‥^)ノ	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+659	(=；ェ；=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+660	(^._.^)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+661	ㅇㅅㅇ	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+662	(=^‥^=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+663	(=｀ω´=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+664	 ( =①ω①=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+665	(=;ェ;=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+666	(^-人-^)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+667	 (=^-ω-^=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+668	（=´∇｀=）	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+669	~(=^‥^)/	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+670	(=｀ェ´=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+671	└(=^‥^=)┐	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+672	(・∀・)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+673	(=^･^=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+674	o(^・x・^)o	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+675	d(=^･ω･^=)b	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+676	ヽ(=^･ω･^=)丿	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+677	ヽ(^‥^=ゞ)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+678	b(=^‥^=)o	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+679	ヾ(=ﾟ･ﾟ=)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+680	(=ｘェｘ=)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+681	(^･o･^)ﾉ”	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+682	 =’①。①’=	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+683	(^人^)	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+684	<(*ΦωΦ*)>	2013-10-19 23:36:30.195105-07	{"category":"Cats"}
+685	U￣ｰ￣U	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+686	ヾ(●ω●)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+687	∪･ω･∪	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+688	▽・ｗ・▽	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+689	ＵＴｪＴＵ	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+690	ｏ（Ｕ・ω・）⊃	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+691	▼o・ェ・o▼	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+692	┌U･ｪ･U┘	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+693	(〓￣(∵エ∵)￣〓)	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+694	U｡･ｪ･｡U	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+695	Ｕ^皿^Ｕ	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+696	(^・(I)・^)	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+697	(^・x・^)	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+698	U＾ェ＾U	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+699	└@(･ｪ･)@┐	2013-10-19 23:36:30.195105-07	{"category":"Dogs"}
+700	(゜))<<	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+701	ミ．．ミ	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+702	>゜))))彡	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+703	>^)))< ～～	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+704	Ｃ：。ミ	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+705	>°))))彡	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+706	V=(° °)=V	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+707	ミ[°°]ミ	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+708	(/)(;,,;)(/)	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+709	ζ°)))彡	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+710	(°)#))<<	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+711	(Q )) >	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+712	≧〔゜゜〕≦	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+713	＜コ：ミ	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+714	くコ:彡	2013-10-19 23:36:30.195105-07	{"category":"Fish and Sea Creatures"}
+715	ヾ(・ω・ｏ)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+716	 (ﾉ･ω･)ﾉﾞ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+717	(。-`ω´-)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+718	ヽ(｡ゝω・｡)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+719	（⊂((・⊥・))⊃）	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+720	○(・x・)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+721	⊆（⌒◎⌒）⊇	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+722	（≡・　x　・≡）	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+723	ヽ(´･ω･`)､	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+724	~(-仝-)~	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+725	～＞°）mニニニニ＝～	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+726	]＾：山	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+727	(•ㅅ•)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+728	(○’ω’○)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+729	(´-ω-｀)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+730	┗(･ω･;)┛	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+731	ヾ(ｏ･ω･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+732	(・ω・；)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+733	 (´o・┏ω┓・o｀)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+734	 ヽ(･ω･ゞ)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+735	(=ﾟωﾟ)ノ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+736	(´・ω・`)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+737	~(-仝-)~	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+738	◎▼◎	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+739	≫(‘♀’)≪	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+740	 (∵)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+741	(*´ω｀)o	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+742	～>゜）～～～～	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+743	(∩ё∩)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+744	(͒⑅′ ‵⑅)͒*	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+745	༼´◓ɷ◔`༽	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+746	[´・ω・`]	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+747	(*･ω･)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+748	｛・ω-*}	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+749	w(´･ω･`)w	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+750	Σ(・ω・`|||)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+751	ヽ(･ω･｡)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+752	ヾ(･ω･`｡)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+753	(｡+･`ω･´)	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+754	⊂^j^⊃	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+755	⊂((〃’⊥’〃))⊃	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+756	（-Φ-）	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+757	（’∽’）	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+758	 Σ( ﾟωﾟ；≡⊃	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+759	 (´・ω・)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+760	＞°）m～～～∈	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+761	～>`)～～～	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+762	(･｀ｪ´･)つ	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+763	~~……ヾლ∩з…….~~	2013-10-19 23:36:30.195105-07	{"category":"Other Animals"}
+764	@(*^ｪ^)@	2013-10-19 23:36:30.195105-07	{"category":"Monkeys"}
+765	ヾ(＠＾(∞)＾＠)ノ	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+766	ヾ(；ﾟ(OO)ﾟ)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+767	(○｀（●●）´○)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+768	 (；ﾟ(OO)ﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+769	 q(￣(oo)￣)p	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+770	(￣(▽▽)￣)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+771	ヽ(*’(OO)’)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+772	(*’(OO)’*)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+773	 (*´(00)`)’	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+774	｡ﾟ(ﾟ´(00)`ﾟ)ﾟ｡	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+775	 (=｀(∞)´=)	2013-10-19 23:36:30.195105-07	{"category":"Pigs"}
+776	(シ_ _)シ	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+777	 ｍ（＿　＿；；ｍ	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+778	ｍ（．＿．）ｍ	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+779	<(_ _)>	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+780	 m(￢0￢)m	2013-10-19 23:36:30.195105-07	{"category":"Apologize"}
+781	〜(^∇^〜）	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+782	 (〜￣△￣)〜	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+783	┗(＾0＾)┓	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+784	ヘ(￣ー￣ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+785	ヘ(^o^ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+786	ヾ(＠^∇^＠)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+787	(ﾉﾟ▽ﾟ)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+788	 (ﾉ*ﾟｰﾟ)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+789	ヾ(*д*)ﾉ゛	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+790	(ノ°ο°)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+791	ヾ(ﾟ∀ﾟゞ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+792	〈( ^.^)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+793	 ♪(┌・。・)┌	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+794	(ノ^_^)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+795	(ノ´＿ゝ｀）ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+796	( ﾉ^ω^)ﾉﾟ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+797	(*ﾉ´□`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+798	〜(￣▽￣〜)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+799	（〜^∇^)〜	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+800	 ┗(｀ー´)┓	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+801	┏(＾0＾)┛	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+802	ヘ(￣ω￣ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+803	(ノ^o^)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+804	(ﾉ≧∀≦)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+805	 ヽ(ﾟｰﾟ*ヽ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+806	 ヽ(*´Д｀*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+807	ヽ(°◇° )ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+808	(ﾉ･o･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+809	ヽ(´ー`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+810	┌（★ｏ☆）┘	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+811	┌(・。・)┘♪	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+812	o(^^o)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+813	ヾ(^ ^ゞ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+814	ヾ(*´∇`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+815	。(⌒∇⌒。)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+816	(〜￣▽￣)〜	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+817	 〜(￣△￣〜)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+818	┏(｀ー´)┛	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+819	(ノ￣ー￣)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+820	(ノ￣ω￣)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+821	ヾ(-_- )ゞ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+822	＼(^ω^＼)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+823	 ヽ(*ﾟｰﾟ*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+824	(o´･_･)っ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+825	ヽ( °◇°)ノ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+826	ヾ(^^ゞ)	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+827	ヾ（*⌒ヮ⌒*）ゞ	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+828	└（★ｏ★）┐	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+829	ヾ(⌐■_■)ノ♪	2013-10-19 23:36:30.195105-07	{"category":"Dancing"}
+830	(； ｀ｪ´ ；)b三b	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+831	(。・・)_且	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+832	(　 ゜Д゜)⊃旦	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+833	 (*^◇^)_旦	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+834	 (＾-＾)＿日	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+835	(＃´ー´)旦	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+836	且_(ﾟ◇ﾟ；)ノﾞ	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+837	( ´･ω･`)_且~	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+838	(*｀▽´)_旦~~	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+839	~~旦_(･o･;)	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+840	且_(・_・ )	2013-10-19 23:36:30.195105-07	{"category":"Drinking"}
+841	ヾ(＠⌒ー⌒＠)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+842	＼(￣O￣)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+843	 (￣∠ ￣ )ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+844	 (/・0・)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+845	 (。･д･)ﾉﾞ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+846	(o´ω`o)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+847	( ・_・)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+848	＼(-_- )	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+849	ヾ(☆▽☆)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+850	ヘ(‘◇’、)/	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+851	ヘ(゜Д、゜)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+852	ヽ(๏∀๏ )ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+853	ヾ(＾-＾)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+854	(^-^*)/	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+855	(^o^)/	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+856	(ﾉ´∀｀*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+857	＼(＾▽＾*)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+858	ヾ(-_-;)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+859	~ヾ ＾∇＾	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+860	 (｡･ω･)ﾉﾞ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+861	(*￣Ｏ￣)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+862	 (ノ^∇^)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+863	＼(°o°；）	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+864	( ･ω･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+865	＼(-o- )	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+866	＼( ･_･)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+867	(^ Q ^)/゛	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+868	ヘ(°◇、°)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+869	（ ゜ρ゜)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+870	＼(°o°；）	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+871	ヽ(ﾟ◇ﾟ )ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+872	( ﾟ▽ﾟ)/	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+873	(^ _ ^)/	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+874	ヾ(´･ω･｀)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+875	(*＾▽＾)／	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+876	ヾ( ‘ – ‘*)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+877	~ヾ(＾∇＾)	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+878	 (*^･ｪ･)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+879	ヾ(｡´･_●･`｡)☆	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+880	(,, ･∀･)ﾉ゛	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+881	 (｡´∀｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+882	(。^_・)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+883	(。-ω-)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+884	ヾ(´￢｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+885	~(＾◇^)/	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+886	ヘ(°￢°)ノ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+887	ー( ´ ▽ ` )ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+888	ヾ(◜▿‾ 三 ‾▿◝)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+889	ﾍ(ﾟ∀ﾟ*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Hello and Goodbye"}
+890	(-ε- )	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+891	ლ(|||⌒εー|||)ლ	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+892	(ʃƪ ˘ ³˘)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+893	(づ｡◕‿‿◕｡)づ	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+894	～(^з^)-☆	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+895	(‘ε’)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+896	（*＾3＾）	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+897	(☆´3｀)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+898	（○゜ε＾○）	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+899	（＠ーεー＠）	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+900	 (╯3╰)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+901	(ɔˆ ³(ˆ⌣ˆc)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+902	(>^_^)><(^o^<)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+903	|°з°|	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+904	|(￣3￣)|	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+905	(´ε｀*)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+906	(*￣з￣)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+907	(TεT)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+908	（*＾3＾）/～☆	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+909	 (ΘεΘ;)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+910	(｡・//ε//・｡)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+911	 ლ(́◉◞౪◟◉‵ლ)	2013-10-19 23:36:30.195105-07	{"category":"Kissing"}
+912	 (●´艸`)	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+913	(｡ >艸<)	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+914	(◎ヮ◎)	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+915	（⌒▽⌒）	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+916	(*´艸`*)	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+917	(*≧艸≦)	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+918	｡ﾟ(TヮT)ﾟ｡	2013-10-19 23:36:30.195105-07	{"category":"Laughing"}
+919	(*゜▽゜ノノ゛☆	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+920	（＾Ｏ＾☆♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+921	“ヽ(´▽｀)ノ”	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+922	ヽ(○´∀`)ﾉ♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+923	(´△｀)♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+924	♪(´ε｀ )	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+925	♪♪(o*゜∇゜)o～♪♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+926	＼(^o^)／	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+927	ヽ(´▽｀；)/♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+928	ヾ(´ρ｀)〃	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+929	(ﾉ´▽｀)ﾉ♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+930	(´0ﾉ｀*)	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+931	（＾3＾♪	2013-10-19 23:36:30.195105-07	{"category":"Singing"}
+932	(∪｡∪)｡｡｡zzz	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+933	(o´Д`)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+934	（´□｀川）	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+935	(ᴗ˳ᴗ)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+936	{zzz}°°°( -_-)>c[_]	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+937	(-ｪ-)｡o	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+938	ε-(´・｀)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+939	［(－－)］zzz	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+940	ヾ(￣0￣； )ノ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+941	(。-ω-)zzz	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+942	(´〜｀*) zzz	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+943	（)´д`(）	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+944	ᕙ(⇀‸↼‶)ᕗ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+945	＿ﾉ乙(､ﾝ､)_	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+946	( -_-)>c[_]	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+947	(;´ρ`)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+948	＼(o￣∇￣o)/	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+949	(´～`)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+950	ヾ(。￣□￣)ﾂ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+951	(-_-) zzz	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+952	∑(￣□￣)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+953	（;≧皿≦）	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+954	(ι´Д｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+955	_(：3 」∠ )_	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+956	(_ _)ヾ(‘ロ‘)	2013-10-19 23:36:30.195105-07	{"category":"Sleeping"}
+957	(－ｏ⌒)	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+958	(^_−)☆	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+959	（＾＿・）	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+960	（＾＿－）≡★	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+961	(･ｪ-)	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+962	（＾＿−）	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+963	(⌒.−)＝★	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+964	๏[-ิ_•ิ]๏	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+965	☆～（ゝ。∂）	2013-10-19 23:36:30.195105-07	{"category":"Winking"}
+966	φ(・ω・｀ )	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+967	φ(°ρ°*)メ	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+968	φ(._.)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+969	 ψ(。。)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+970	＿φ(°-°=)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+971	＿〆(。。)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+972	〆(・∀・＠)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+973	＿φ(□□ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+974	φ（．．）	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+975	φ(◎◎ヘ)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+976	φ(◎◎へ）	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+977	 φ(．．;)	2013-10-19 23:36:30.195105-07	{"category":"Writing"}
+978	(*・_・)ノ⌒*	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+979	八(＾□＾*)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+980	(?・・)σ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+981	(ι´Д｀)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+982	d(-_^)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+983	( ﾟ∀(・－・)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+984	p(*＾-＾*)q	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+985	(*・)σσσ(*゜Д゜*)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+986	ヽ｀、ヽ｀ヽ(*￣o￣*)>ヽ｀、ヽ｀	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+987	￢o(￣-￣ﾒ)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+988	（　＾）／占~~~~~	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+989	（*＾＾）/~~~~~~~~~~◎	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+990	（。_°☆＼(- – )	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+991	( `_)乂(_’ )	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+992	Ｏ( ｀_´)乂(｀_´ )Ｏ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+993	(`･ω･´)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+994	(●ゝω)ノヽ(∀＜●)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+995	凸(⊙▂⊙✖ )	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+996	(づ￣ ³￣)づ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+997	( ^o)ρ┳┻┳°σ(o^ )	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+998	ヽ(^o^)ρ┳┻┳°σ(^o^)/	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+999	(／_^)／ 　　　　　　●　＼(^_＼)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1000	＝( ^o^)ノ ．．．…___ｏ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1001	(-^-^)p_____|_o____q(^-^ )	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1002	(／o^)/ °⊥ ＼(^o＼)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1003	(ｏ・_・)ノ”(ノ_＜。)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1004	―(T_T)→	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1005	 ლ(´ڡ`ლ)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1006	(☞ﾟ∀ﾟ)☞	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1007	( ∙_∙)>⌐■-■	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1008	(⌐■_■)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1009	 ─=≡Σ((( つ•̀ω•́)つ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1010	ᕦ(ò_óˇ)ᕤ “	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1011	(˘ʃƪ˘)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1012	ヽ(#ﾟДﾟ)ﾉ┌┛Σ(ノ´Д`)ノ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1013	(*ﾟﾉOﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1014	ヽ(｀Д´)ノ　(д´ノ)　ヽ(　　　)ノ　(ヽ´△) ヽ(´△`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1015	(ง •̀_•́)ง	2013-10-19 23:36:30.195105-07	{"category":"Other Actions"}
+1016	(o_-)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1017	(*_*)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1018	(#+_+)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1019	（Ω_Ω）	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1020	(u_u)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1021	٩(×̯×)۶	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1022	(×_×;）	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1023	(+_+)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1024	へ（>_<へ)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1025	(✖╭╮✖)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1026	(ñ_ñ)	2013-10-19 23:36:30.195105-07	{"category":"Dead"}
+1027	o(-_-;*)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1028	(oT-T)尸	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1029	(ノ#-_-)ノ	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1030	(　-。-)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1031	＼(-___________-;)／	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1032	((-_-))	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1033	(/ _ ; )	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1034	(;*´Д`)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1035	(ﾉ￣д￣)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1036	 ﾍ(;´Д｀ﾍ)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1037	 ヘ（´ｏ｀）ヘ	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1038	（~～~）	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1039	(@_@)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1040	/(;-_-)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1041	（ー△ー；）	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1042	(o_ _)o	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1043	(ﾉ_ _)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1044	(;-_-)ノ	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1045	(;-_-)/	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1046	(一。一;;）	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1047	y-(~。~；)	2013-10-19 23:36:30.195105-07	{"category":"Surrender"}
+1048	(◎｀・ω・´)人(´・ω・｀*)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1049	(*´∀｀*人*´∀｀*)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1050	（*＾ω＾）人（＾ω＾*）	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1051	＼（＾∀＾）メ（＾∀＾）ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1052	(((*°▽°*)八(*°▽°*)))♪	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1053	(〃￣д￣)八( ￣д￣ )八(￣д￣〃)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1054	(((＠°▽°＠)八(＠°▽°＠)))	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1055	 (○｀ε´○)／＼(○｀ε´○)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1056	(/^-^(^ ^*)/	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1057	(・_・)〆＼(Ｔ＿Ｔ）	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1058	ヽ(´Д｀)人(´Д｀)人(´Д｀)ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1059	♪ヽ( ⌒o⌒)人(⌒-⌒ )v ♪	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1060	＼(　^o)( ^ 0 ^ )(o^　)／	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1061	(・_・”)／＼(・_・”)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1062	(＾○＾)オ(＾▽＾)ハ(＾０＾)ツ～	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1063	 (°◇°人°◇°)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1064	(*･∀･)／＼(･∀･*)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1065	＼（★´−｀）人（´▽｀★）／	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1066	(〃⌒▽⌒)八(〃⌒▽⌒〃)八(⌒▽⌒〃)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1067	( ｡･_･｡)人(｡･_･｡ )	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1068	━(○´ｴ｀)(´ｴ｀●)━	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1069	｡*:★(´・ω・人・ω・`)｡:゜★｡	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1070	（＾▽＾）／＼（＾▽＾）	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1071	ヽ(○´∀)乂(*´∀`*）乂(∀`●)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1072	ヽ(´Д｀)人(´Д｀)人(´Д｀)ノ〜♪	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1073	♡(*´∀｀*)人(*´∀｀*)♡	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1074	ヽ(＾▽＾)人(＾▽＾)人(＾▽＾)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1075	(･_･”)/＼(･_･”)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1076	ヘ( ^o^)ノ＼(^_^ )	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1077	 ( 。・_・。)人(。・_・。 )	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1078	(^^)-(^^)-(^^)-(^^)-(^^)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1079	ヾ(￣ー￣)X(^∇^)ゞ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1080	(*^o^)人(^o^*)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1081	ヽ（　＾＾）人（＾＾　）ノ	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1082	└(^o^ )Ｘ( ^o^)┘	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1083	 ( ⌒o⌒)人(⌒-⌒ )v	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1084	 (=´∀`)人(´∀‘=)	2013-10-19 23:36:30.195105-07	{"category":"Friends"}
+1085	 (￣┏∞┓￣)	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+1086	(´┏･┓｀)	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+1087	( ￣┏＿┓￣)	2013-10-19 23:36:30.195105-07	{"category":"Mustache"}
+1088	 (◕〝◕)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1089	（;´_ヘ;）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1090	＼(●o○;)ノ	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1091	（ｏ。ｏ；）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1092	☆⌒（＊＾∇゜）v	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1093	━━☆＞＾）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1094	【:εω	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1095	(⊙ヮ⊙)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1096	・゜・(ノД`)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1097	(-_＼)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1098	ヽ(*´Д｀*)ﾉ	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1099	(　ﾟдﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1100	＼(ﾟｰﾟ＼)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1101	( c//”-}{-*\\x)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1102	（πーπ）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1103	(V)o\\o;;(V)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1104	m{oYo}屮	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1105	（´・｀ ）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1106	 (๑₍₍₎₎)✧	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1107	( °٢° )	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1108	ヽ(´Д｀ヽ	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1109	( 　ﾟ,_ゝﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1110	v(｡-_-｡)v	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1111	 (/・・)ノ	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1112	o(‧”’‧)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1113	(◐ o ◑ )	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1114	w(@。@;)w	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1115	（＄０＄）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1116	☆⌒(*＾-°)v	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1117	*~●＞＾）	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1118	(^ц^ )	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1119	‹(•¿•)›	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1120	( 　ﾟ,_ゝﾟ)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+1121	 | (•□•) | (❍ᴥ❍ʋ)	2013-10-19 23:36:30.195105-07	{"category":"Miscellaneous"}
+\.
+
+
+--
+-- Name: emoji_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('emoji_id_seq', 1121, true);
+
+
+--
+-- Data for Name: emojiparts; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY emojiparts (id, emoji, created_at, data) FROM stdin;
+1	´	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+2	｀	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+3	・	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+4	；	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+5	≧	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+6	≦	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+7	⌒	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+8	^	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+9	＾	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+10	T	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+11	｀	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+12	´	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+13	⊙	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+14	∩	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+15	Φ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+16	｡	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+17	＞	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+18	＠	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+19	°	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+20	¬	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+21	ಥ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+22	͡°	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+23	￣	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+24	☆	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+25	◎	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+26	†	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+27	✿ฺ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+28	♡	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+29	-	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+30	•ิ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+31	⊙	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+32	☉	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+33	º	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+34	*	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+35	┳	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+36	◣	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+37	◢	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+38	ಠ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+39	x	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+40	ｉ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+41	╥	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+42	①	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+43	ㅇ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+44	●	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+45	o	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+46	0	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+47	๏	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+48	⇀	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+49	。	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+50	•̀	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+51	•́	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+52	ò	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+53	ó	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+54	+	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+55	X	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+56	ñ	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+57	＊	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+58	~	2013-10-19 23:36:30.195105-07	{"part":"eyes"}
+59	∀	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+60	▽ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+61	 ω	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+62	◇ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+63	_ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+64	ｖ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+65	‿ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+66	。 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+67	౪ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+68	¬ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+69	っ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+70	． 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+71	^ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+72	Д 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+73	ﾛ	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+74	~ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+75	■ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+76	д 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+77	□ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+78	ヮ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+79	Σ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+80	ｪ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+81	﹏ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+82	m	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+83	皿 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+84	▂ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+85	益 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+86	△ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+87	︵ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+88	⌓ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+89	へ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+90	人 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+91	ㅅ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+92	x	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+93	o	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+94	0	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+95	O 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+96	 仝	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+97	⊥ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+98	ɷ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+99	∠ 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+100	3	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+101	ε 	2013-10-19 23:36:30.195105-07	{"part":"mouths"}
+102	(	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+103	ヽ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+104	∩ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+105	Ｏ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+106	＼ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+107	d	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+108	へ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+109	ヾ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+110	 く	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+111	｢	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+112	 ┗	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+113	╮ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+114	ლ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+115	╰	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+116	<	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+117	Σ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+118	ミ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+119	凸 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+120	ᕙ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+121	щ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+122	ᕦ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+123	╭ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+124	t	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+125	ͼ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+126	ψ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+127	^	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+128	／	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+129	⊂	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+130	m	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+131	~	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+132	ヾ 	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+133	-	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+134	ψ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+135	φ	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+136	v	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+137	w	2013-10-19 23:36:30.195105-07	{"part":"left arms"}
+138	)	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+139	ノ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+140	⊃	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+141	∩ 	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+142	Ｏ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+143	／ 	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+144	ﾉ 	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+145	b	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+146	/	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+147	Ψ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+148	o	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+149	ゞ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+150	y	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+151	~	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+152	ヾ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+153	｣	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+154	7	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+155	 ┌	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+156	┛	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+157	╭	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+158	>	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+159	/	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+160	ミ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+161	凸	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+162	╮	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+163	ლ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+164	ᕗ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+165	ᕤ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+166	人	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+167	ヘ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+168	＼	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+169	っ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+170	┐	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+171	ﾉ”	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+172	m	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+173	シ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+174	づ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+175	φ	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+176	v	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+177	w	2013-10-19 23:36:30.195105-07	{"part":"right arms"}
+178	 ●	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+179	★	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+180	｡	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+181	✿	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+182	@	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+183	❁	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+184	＝	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+185	๑	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+186	♡	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+187	〃	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+188	o	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+189	*	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+190	#	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+191	;	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+192	☆	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+193	ㅇ	2013-10-19 23:36:30.195105-07	{"part":"cheeks"}
+\.
+
+
+--
+-- Name: emojiparts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('emojiparts_id_seq', 193, true);
+
+
+--
+-- Name: emoji_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY emoji
+    ADD CONSTRAINT emoji_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: emojiparts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY emojiparts
+    ADD CONSTRAINT emojiparts_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
